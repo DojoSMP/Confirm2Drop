@@ -62,7 +62,6 @@ public class ToggleCommand extends BaseCommand {
         );
     }
 
-
     @Override
     public List<String> tabComplete(Confirm2Drop plugin, CommandSender sender, String[] args) {
         return Collections.emptyList();

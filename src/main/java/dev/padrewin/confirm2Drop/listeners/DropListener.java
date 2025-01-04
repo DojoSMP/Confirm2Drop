@@ -58,7 +58,12 @@ public class DropListener implements Listener {
             long timeoutEnd = confirmationTimeouts.getOrDefault(playerUUID, 0L);
 
             if (areItemsEqual(pendingItem, item) && currentTime < timeoutEnd) {
-                debug("Player " + player.getName() + " confirmed the drop for item: " + item.getType());
+                if (isInventoryFull(player)) {
+                    dropItemToGround(player, item);
+                    event.getItemDrop().remove();
+                } else {
+                    debug("Player " + player.getName() + " confirmed the drop for item: " + item.getType());
+                }
                 pendingConfirmation.remove(playerUUID);
                 confirmationTimeouts.remove(playerUUID);
                 return;
@@ -79,8 +84,26 @@ public class DropListener implements Listener {
         requestConfirmation(player, item);
     }
 
+
+    private boolean isInventoryFull(Player player) {
+        return player.getInventory().firstEmpty() == -1;
+    }
+
+    private void dropItemToGround(Player player, ItemStack item) {
+        player.getWorld().dropItemNaturally(player.getLocation(), item);
+        debug("Player " + player.getName() + "'s inventory is full. Dropped item " + item.getType() + " to the ground.");
+        plugin.getManager(LocaleManager.class).sendMessage(player, "inventory-full-drop-message");
+    }
+
     private void requestConfirmation(Player player, ItemStack item) {
         UUID playerUUID = player.getUniqueId();
+
+        if (isInventoryFull(player)) {
+            debug("Player " + player.getName() + "'s inventory is full. Dropping item to the ground.");
+            dropItemToGround(player, item);
+            return;
+        }
+
         pendingConfirmation.put(playerUUID, item.clone());
 
         int timeoutSeconds = plugin.getConfig().getInt("confirmation-timeout", 10);
@@ -90,6 +113,7 @@ public class DropListener implements Listener {
         debug("Confirmation request sent to player " + player.getName() + " for item: " + item.getType() + ". Timeout: " + timeoutSeconds + " seconds.");
         plugin.getManager(LocaleManager.class).sendMessage(player, "drop-confirmation-message");
     }
+
 
     private boolean shouldRequireConfirmation(ItemStack item) {
         boolean toolsBlacklist = plugin.getConfig().getBoolean("blacklist.tools", true);
