@@ -18,6 +18,7 @@ drop-confirmation-message: "&7You need to drop the item again to confirm the act
 plugin-disabled-message: '&cOops! This feature is currently turned off in the server settings. Contact the server owner.'
 placeholder-status-enabled: "&aenabled"
 placeholder-status-disabled: "&cdisabled"
+inventory-full-drop-message: "&cYour inventory is full! The item has been dropped on the ground."
 
 # Toggle Command Message
 command-toggle-description: '&8 - &c/confirm2drop toggle &7- Toggles drop confirmation for the player'
