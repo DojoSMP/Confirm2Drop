@@ -98,12 +98,6 @@ public class DropListener implements Listener {
     private void requestConfirmation(Player player, ItemStack item) {
         UUID playerUUID = player.getUniqueId();
 
-        if (isInventoryFull(player)) {
-            debug("Player " + player.getName() + "'s inventory is full. Dropping item to the ground.");
-            dropItemToGround(player, item);
-            return;
-        }
-
         pendingConfirmation.put(playerUUID, item.clone());
 
         int timeoutSeconds = plugin.getConfig().getInt("confirmation-timeout", 10);
