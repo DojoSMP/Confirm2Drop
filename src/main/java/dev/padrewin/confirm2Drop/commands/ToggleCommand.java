@@ -2,7 +2,6 @@ package dev.padrewin.confirm2Drop.commands;
 
 import dev.padrewin.colddev.utils.StringPlaceholders;
 import dev.padrewin.confirm2Drop.Confirm2Drop;
-import dev.padrewin.confirm2Drop.listeners.DropListener;
 import dev.padrewin.confirm2Drop.manager.CommandManager;
 import dev.padrewin.confirm2Drop.manager.LocaleManager;
 import org.bukkit.command.CommandSender;
