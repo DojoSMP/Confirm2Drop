@@ -1,7 +1,5 @@
 package dev.padrewin.confirm2Drop.commands;
 
-import java.util.Collections;
-import java.util.List;
 import dev.padrewin.confirm2Drop.Confirm2Drop;
 import dev.padrewin.confirm2Drop.manager.CommandManager;
 import dev.padrewin.confirm2Drop.manager.LocaleManager;
@@ -11,6 +9,9 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Collections;
+import java.util.List;
 
 public class VersionCommand extends BaseCommand {
 

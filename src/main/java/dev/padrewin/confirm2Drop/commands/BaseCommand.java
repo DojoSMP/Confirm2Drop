@@ -1,11 +1,12 @@
 package dev.padrewin.confirm2Drop.commands;
 
-import java.util.Collections;
-import java.util.List;
 import dev.padrewin.confirm2Drop.Confirm2Drop;
 import dev.padrewin.confirm2Drop.manager.CommandManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permissible;
+
+import java.util.Collections;
+import java.util.List;
 
 public abstract class BaseCommand implements NamedExecutor {
 
@@ -22,7 +23,7 @@ public abstract class BaseCommand implements NamedExecutor {
      *
      * @param plugin Confirm2Drop instance.
      * @param sender Sender of the command.
-     * @param args Command arguments.
+     * @param args   Command arguments.
      */
     public abstract void execute(Confirm2Drop plugin, CommandSender sender, String[] args);
 
@@ -31,7 +32,7 @@ public abstract class BaseCommand implements NamedExecutor {
      *
      * @param plugin Confirm2Drop instance.
      * @param sender Sender of the command.
-     * @param args Command arguments.
+     * @param args   Command arguments.
      */
     public abstract List<String> tabComplete(Confirm2Drop plugin, CommandSender sender, String[] args);
 

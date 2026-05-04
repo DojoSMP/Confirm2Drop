@@ -8,11 +8,10 @@ import dev.padrewin.colddev.manager.Manager;
 import dev.padrewin.colddev.manager.PluginUpdateManager;
 import dev.padrewin.confirm2Drop.database.DatabaseManager;
 import dev.padrewin.confirm2Drop.hook.Confirm2DropPlaceholderExpansion;
+import dev.padrewin.confirm2Drop.listeners.DropListener;
 import dev.padrewin.confirm2Drop.manager.CommandManager;
 import dev.padrewin.confirm2Drop.manager.LocaleManager;
 import dev.padrewin.confirm2Drop.setting.SettingKey;
-import dev.padrewin.confirm2Drop.listeners.DropListener;
-
 import org.bukkit.Bukkit;
 
 import java.io.File;
@@ -110,7 +109,7 @@ public final class Confirm2Drop extends ColdPlugin {
 
     @Override
     protected String[] getColdConfigHeader() {
-        return new String[] {
+        return new String[]{
                 " ██████╗ ██████╗ ██╗     ██████╗ ",
                 "██╔════╝██╔═══██╗██║     ██╔══██╗",
                 "██║     ██║   ██║██║     ██║  ██║",

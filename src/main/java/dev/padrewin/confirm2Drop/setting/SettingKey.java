@@ -2,12 +2,11 @@ package dev.padrewin.confirm2Drop.setting;
 
 import dev.padrewin.colddev.config.ColdSetting;
 import dev.padrewin.colddev.config.ColdSettingSerializer;
+import dev.padrewin.confirm2Drop.Confirm2Drop;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import dev.padrewin.confirm2Drop.Confirm2Drop;
 
 import static dev.padrewin.colddev.config.ColdSettingSerializers.*;
 
@@ -78,5 +77,6 @@ public class SettingKey {
         return Collections.unmodifiableList(KEYS);
     }
 
-    private SettingKey() {}
+    private SettingKey() {
+    }
 }

@@ -1,16 +1,17 @@
 package dev.padrewin.confirm2Drop.manager;
 
 import com.google.common.collect.Lists;
-import dev.padrewin.confirm2Drop.Confirm2Drop;
 import dev.padrewin.colddev.ColdPlugin;
 import dev.padrewin.colddev.config.CommentedFileConfiguration;
 import dev.padrewin.colddev.manager.Manager;
+import dev.padrewin.confirm2Drop.Confirm2Drop;
+import dev.padrewin.confirm2Drop.commands.Commander;
+import org.bukkit.command.PluginCommand;
+
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import dev.padrewin.confirm2Drop.commands.Commander;
-import org.bukkit.command.PluginCommand;
 
 public class CommandManager extends Manager {
 

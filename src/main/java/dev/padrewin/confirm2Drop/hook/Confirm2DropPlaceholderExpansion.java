@@ -2,8 +2,8 @@ package dev.padrewin.confirm2Drop.hook;
 
 import dev.padrewin.confirm2Drop.Confirm2Drop;
 import dev.padrewin.confirm2Drop.manager.LocaleManager;
-import org.bukkit.OfflinePlayer;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import org.bukkit.OfflinePlayer;
 
 public class Confirm2DropPlaceholderExpansion extends PlaceholderExpansion {
 
