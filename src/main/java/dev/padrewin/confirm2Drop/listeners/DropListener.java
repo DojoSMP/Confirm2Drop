@@ -5,10 +5,12 @@ import dev.padrewin.confirm2Drop.manager.LocaleManager;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -58,12 +60,7 @@ public class DropListener implements Listener {
             long timeoutEnd = confirmationTimeouts.getOrDefault(playerUUID, 0L);
 
             if (areItemsEqual(pendingItem, item) && currentTime < timeoutEnd) {
-                if (isInventoryFull(player)) {
-                    dropItemToGround(player, item);
-                    event.getItemDrop().remove();
-                } else {
-                    debug("Player " + player.getName() + " confirmed the drop for item: " + item.getType());
-                }
+                debug("Player " + player.getName() + " confirmed the drop for item: " + item.getType());
                 pendingConfirmation.remove(playerUUID);
                 confirmationTimeouts.remove(playerUUID);
                 return;
@@ -79,20 +76,33 @@ public class DropListener implements Listener {
             return;
         }
 
+        if (!canReturnToInventory(player, item)) {
+            debug("Player " + player.getName() + "'s inventory is full. Allowing drop without confirmation to prevent item loss.");
+            plugin.getManager(LocaleManager.class).sendMessage(player, "inventory-full-drop-message");
+            player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1.0f, 1.0f);
+            return;
+        }
+
         debug("Confirmation required for item: " + item.getType());
         event.setCancelled(true);
         requestConfirmation(player, item);
     }
 
-
-    private boolean isInventoryFull(Player player) {
-        return player.getInventory().firstEmpty() == -1;
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        resetPendingConfirmation(event.getPlayer());
     }
 
-    private void dropItemToGround(Player player, ItemStack item) {
-        player.getWorld().dropItemNaturally(player.getLocation(), item);
-        debug("Player " + player.getName() + "'s inventory is full. Dropped item " + item.getType() + " to the ground.");
-        plugin.getManager(LocaleManager.class).sendMessage(player, "inventory-full-drop-message");
+    private boolean canReturnToInventory(Player player, ItemStack item) {
+        if (player.getInventory().firstEmpty() != -1) {
+            return true;
+        }
+        for (ItemStack stack : player.getInventory().getStorageContents()) {
+            if (stack != null && stack.isSimilar(item) && stack.getAmount() + item.getAmount() <= stack.getMaxStackSize()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void requestConfirmation(Player player, ItemStack item) {
