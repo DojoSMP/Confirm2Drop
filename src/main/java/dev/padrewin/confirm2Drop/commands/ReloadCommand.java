@@ -1,11 +1,12 @@
 package dev.padrewin.confirm2Drop.commands;
 
-import java.util.Collections;
-import java.util.List;
 import dev.padrewin.confirm2Drop.Confirm2Drop;
 import dev.padrewin.confirm2Drop.manager.CommandManager;
 import dev.padrewin.confirm2Drop.manager.LocaleManager;
 import org.bukkit.command.CommandSender;
+
+import java.util.Collections;
+import java.util.List;
 
 public class ReloadCommand extends BaseCommand {
 

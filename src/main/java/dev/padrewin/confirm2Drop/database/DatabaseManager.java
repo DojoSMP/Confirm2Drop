@@ -6,7 +6,6 @@ import java.io.File;
 import java.sql.*;
 
 import static dev.padrewin.colddev.manager.AbstractDataManager.*;
-import static dev.padrewin.colddev.manager.AbstractDataManager.ANSI_RESET;
 
 public class DatabaseManager {
 

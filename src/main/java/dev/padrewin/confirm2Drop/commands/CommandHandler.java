@@ -1,31 +1,20 @@
 package dev.padrewin.confirm2Drop.commands;
 
 import dev.padrewin.colddev.hook.PlaceholderAPIHook;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 import dev.padrewin.confirm2Drop.Confirm2Drop;
 import dev.padrewin.confirm2Drop.manager.CommandManager;
 import dev.padrewin.confirm2Drop.manager.LocaleManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.BlockCommandSender;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.command.TabExecutor;
+import org.bukkit.command.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.minecart.CommandMinecart;
 import org.bukkit.permissions.Permissible;
 import org.bukkit.util.StringUtil;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Abstract class to handle the majority of the logic dealing with commands.
@@ -220,7 +209,7 @@ public abstract class CommandHandler implements TabExecutor, NamedExecutor {
      * Method that is called on a CommandHandler if there is no additional
      * arguments given that specify a specific command.
      *
-     * @param sender  - Sender of the command.
+     * @param sender - Sender of the command.
      */
     public abstract void noArgs(CommandSender sender);
 
@@ -229,8 +218,8 @@ public abstract class CommandHandler implements TabExecutor, NamedExecutor {
      * Useful for when expecting a player name parameter on a root command
      * handler command.
      *
-     * @param sender  - Sender of the command.
-     * @param args    - Arguments.
+     * @param sender - Sender of the command.
+     * @param args   - Arguments.
      */
     public abstract void unknownCommand(CommandSender sender, String[] args);
 

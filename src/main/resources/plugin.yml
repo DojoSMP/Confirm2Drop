@@ -1,18 +1,18 @@
 name: Confirm2Drop
 version: '@version@'
-authors: [padrewin]
+authors: [ padrewin ]
 website: 'https://github.com/Cold-Development/Confirm2Drop'
 description: A plugin that requires confirmation to drop specific items.
 main: dev.padrewin.confirm2Drop.Confirm2Drop
 api-version: '1.20'
-softdepend: [PlaceholderAPI]
+softdepend: [ PlaceholderAPI ]
 folia-supported: true
 libraries:
   - 'org.xerial:sqlite-jdbc:3.46.0.0'
 
 commands:
   confirm2drop:
-    aliases: [c2d, dropconfirm]
+    aliases: [ c2d, dropconfirm ]
     description: Root command for Confirm2Drop
 
 permissions:

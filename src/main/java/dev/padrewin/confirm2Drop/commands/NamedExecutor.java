@@ -1,7 +1,8 @@
 package dev.padrewin.confirm2Drop.commands;
 
-import java.util.List;
 import org.bukkit.permissions.Permissible;
+
+import java.util.List;
 
 public interface NamedExecutor {
 
